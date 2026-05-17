@@ -51,26 +51,7 @@ Write the following template to `.claude/memory/handoff.md`:
 
 Only create if the file does not already exist. Do NOT overwrite an existing handoff.md.
 
-### Step 4: Create .claude/memory/MEMORY.md
-
-Write the following template to `.claude/memory/MEMORY.md`:
-
-```markdown
-# Project Memory
-
-## Architecture
-
-
-## Conventions
-
-
-## Important Decisions
-
-```
-
-Only create if the file does not already exist. Do NOT overwrite an existing MEMORY.md.
-
-### Step 5: Update CLAUDE.md
+### Step 4: Update CLAUDE.md
 
 Check if `CLAUDE.md` exists in the project root:
 
@@ -85,14 +66,13 @@ Session Recovery rules to add:
 ### Session Recovery
 新会话开始时：
 1. 阅读 .claude/memory/handoff.md 恢复当前工作状态
-2. 阅读 .claude/memory/MEMORY.md 了解项目长期认知
-3. 结合 git status 和最近修改
-4. 再开始新的修改
+2. 结合 git status 和最近修改
+3. 再开始新的修改
 ```
 
 **Important**: If CLAUDE.md already has a `## Workflow` section, append the Session Recovery subsection under the existing `## Workflow` instead of creating a duplicate section.
 
-### Step 6: Configure SessionStart Hook
+### Step 5: Configure SessionStart Hook
 
 Based on user's choice in Step 1:
 
@@ -127,7 +107,7 @@ The hook configuration format:
 
 Carefully merge with existing hooks if the file already has a `hooks` section. Do NOT remove existing hooks.
 
-### Step 7: Output confirmation
+### Step 6: Output confirmation
 
 List all files created/modified with their paths. Summarize what was done.
 
@@ -143,7 +123,7 @@ Check if `.claude/memory/handoff.md` exists in the current project:
 
 - **If exists**: Proceed to Step 1
 - **If NOT exists**: Tell the user the project has not been initialized for session handoff. Ask: **检测到项目尚未初始化 session-handoff，是否先执行初始化？** Wait for answer:
-  - If yes: Run Mode A init steps (Step 2-7), then proceed to Step 1
+  - If yes: Run Mode A init steps (Step 2-6), then proceed to Step 1
   - If no: Skip handoff and end
 
 ### Step 1: Analyze current session

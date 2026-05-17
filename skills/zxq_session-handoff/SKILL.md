@@ -145,7 +145,6 @@ After analysis, if the session has **no substantive work in progress** (no pendi
 Write the analysis to `.claude/memory/handoff.md` in the project root. **Directly overwrite** the file (do NOT append).
 
 Requirements:
-- Keep it between 50-200 lines
 - Be concise and actionable — oriented toward "resuming work"
 - No fluff or filler text
 - Use the template structure from Mode A

@@ -11,18 +11,28 @@
 
 ## 安装
 
-### 一键安装全部（推荐）
+### macOS / Linux
 
 ```bash
+# 一键安装全部
 curl -fsSL https://raw.githubusercontent.com/zhongxq2018/dev-simple-skills/main/install.sh | bash -s -- --all
-```
 
-### 交互式选择安装
-
-```bash
+# 或克隆后交互选择安装
 git clone https://github.com/zhongxq2018/dev-simple-skills.git
 cd dev-simple-skills
 ./install.sh
+```
+
+### Windows (PowerShell)
+
+```powershell
+# 一键安装全部
+iwr -useb https://raw.githubusercontent.com/zhongxq2018/dev-simple-skills/main/install.ps1 | iex; install.ps1 --all
+
+# 或克隆后交互选择安装
+git clone https://github.com/zhongxq2018/dev-simple-skills.git
+cd dev-simple-skills
+.\install.ps1
 ```
 
 运行后会列出所有可用 skills，输入数字选择要安装的（支持多选，`0` 表示全部安装）。

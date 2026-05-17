@@ -7,7 +7,7 @@ description: Initialize session handoff in a project, or save current session st
 
 Save and restore work state across Claude Code sessions.
 
-## Mode A: Init (`/session-handoff init`)
+## Mode A: Init (`/zxq_session-handoff init`)
 
 Initialize session handoff in the current project. Perform ALL steps in order:
 
@@ -133,9 +133,9 @@ List all files created/modified with their paths. Summarize what was done.
 
 ---
 
-## Mode B: Handoff (`/session-handoff`)
+## Mode B: Handoff (`/zxq_session-handoff`)
 
-When user runs `/session-handoff` (no `init` argument), save current session state.
+When user runs `/zxq_session-handoff` (no `init` argument), save current session state.
 
 ### Step 0: Check initialization
 

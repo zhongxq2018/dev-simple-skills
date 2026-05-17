@@ -40,7 +40,7 @@ description: 记录项目关键变化和决策演进
 
 ### Step 3: 确定写入目标
 
-获取今天日期 `YYYY-MM-DD`，目标文件：`.claude/memory/work-log/YYYY-MM.md`
+获取今天日期 `YYYY-MM-DD`，目标文件：`.claude/memory/log/YYYY-MM.md`
 
 ### Step 4: 写入日志
 

@@ -82,7 +82,7 @@ cd dev-simple-skills
 /zxq_work-log
 ```
 
-每次会话结束前运行，将本次的关键变更（功能、决策、方案调整等）写入 `.claude/memory/zxq_work-log/YYYY-MM.md`。历史记录不可修改，保证项目决策的完整演进过程。
+每次会话结束前运行，将本次的关键变更（功能、决策、方案调整等）写入 `.claude/memory/log/YYYY-MM.md`。历史记录不可修改，保证项目决策的完整演进过程。
 
 ---
 

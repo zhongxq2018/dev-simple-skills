@@ -44,12 +44,10 @@ fi
 
 # --- Parse flags ---
 install_all=false
-install_local=false
 for arg in "$@"; do
   case "$arg" in
-    --all)   install_all=true ;;
-    --local) install_local=true ;;
-    *)       echo "Unknown option: $arg"; echo "Usage: $0 [--all] [--local]"; exit 1 ;;
+    --all) install_all=true ;;
+    *)     echo "Unknown option: $arg"; echo "Usage: $0 [--all]"; exit 1 ;;
   esac
 done
 
@@ -121,29 +119,8 @@ else
   done
 fi
 
-# --- Select install location ---
-if [ "$install_local" = true ]; then
-  SKILLS_DIR="$(pwd)/.claude/skills"
-elif [ ! -t 0 ]; then
-  # Non-interactive without --local: default to global
-  SKILLS_DIR="$HOME/.claude/skills"
-else
-  echo ""
-  echo "Install location:"
-  echo "  [1] Global (~/.claude/skills) — available in all projects"
-  echo "  [2] Local  (.claude/skills)   — only this project"
-  echo ""
-
-  while true; do
-    read -rp "Choose (1/2) [1]: " loc_choice
-    loc_choice="${loc_choice:-1}"
-    case "$loc_choice" in
-      1) SKILLS_DIR="$HOME/.claude/skills"; break ;;
-      2) SKILLS_DIR="$(pwd)/.claude/skills"; break ;;
-      *) echo "Please enter 1 or 2." ;;
-    esac
-  done
-fi
+# --- Install location (global only) ---
+SKILLS_DIR="$HOME/.claude/skills"
 
 # --- Install selected skills ---
 mkdir -p "$SKILLS_DIR"

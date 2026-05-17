@@ -1,40 +1,14 @@
 param(
-    [switch]$All,
-    [switch]$Local
+    [switch]$All
 )
 
 $ErrorActionPreference = "Stop"
 
 $ScriptDir = Split-Path -Parent $MyInvocation.MyCommand.Path
 
-# --- Determine scan locations ---
+# --- Uninstall location (global only) ---
 $GlobalDir = Join-Path $HOME ".claude\skills"
-$LocalDir = Join-Path $ScriptDir ".claude\skills"
-
-$ScanDirs = @()
-
-if ($Local) {
-    $ScanDirs += $LocalDir
-} elseif ($All) {
-    $ScanDirs += $GlobalDir
-} else {
-    Write-Host ""
-    Write-Host "Uninstall from:"
-    Write-Host "  [1] Global (~/.claude/skills)"
-    Write-Host "  [2] Local  (.claude/skills)"
-    Write-Host ""
-
-    while ($true) {
-        $locChoice = Read-Host "Choose (1/2) [1]"
-        if (-not $locChoice) { $locChoice = "1" }
-        switch ($locChoice) {
-            "1" { $ScanDirs += $GlobalDir; break }
-            "2" { $ScanDirs += $LocalDir; break }
-            default { Write-Host "Please enter 1 or 2."; continue }
-        }
-        break
-    }
-}
+$ScanDirs = @($GlobalDir)
 
 # --- Collect project's own skills ---
 $ProjectSkillsDir = Join-Path $ScriptDir "skills"

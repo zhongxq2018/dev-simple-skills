@@ -1,6 +1,5 @@
 param(
-    [switch]$All,
-    [switch]$Local
+    [switch]$All
 )
 
 $ErrorActionPreference = "Stop"
@@ -100,38 +99,11 @@ if ($All) {
     Write-Host ""
     Write-Host "Non-interactive mode detected. Use -All to install all skills:"
     Write-Host "  .\install.ps1 -All"
-    Write-Host ""
-    Write-Host "Or download and run interactively:"
-    Write-Host "  git clone https://github.com/zhongxq2018/dev-simple-skills.git"
-    Write-Host "  cd dev-simple-skills"
-    Write-Host "  .\install.ps1"
     exit 1
 }
 
-# --- Select install location ---
-if ($Local) {
-    $SkillsDir = Join-Path (Get-Location) ".claude\skills"
-} elseif ($All) {
-    # Non-interactive with -All but no -Local: default to global
-    $SkillsDir = Join-Path $HOME ".claude\skills"
-} else {
-    Write-Host ""
-    Write-Host "Install location:"
-    Write-Host "  [1] Global (~/.claude/skills) — available in all projects"
-    Write-Host "  [2] Local  (.claude/skills)   — only this project"
-    Write-Host ""
-
-    while ($true) {
-        $locChoice = Read-Host "Choose (1/2) [1]"
-        if (-not $locChoice) { $locChoice = "1" }
-        switch ($locChoice) {
-            "1" { $SkillsDir = Join-Path $HOME ".claude\skills"; break }
-            "2" { $SkillsDir = Join-Path (Get-Location) ".claude\skills"; break }
-            default { Write-Host "Please enter 1 or 2."; continue }
-        }
-        break
-    }
-}
+# --- Install location (global only) ---
+$SkillsDir = Join-Path $HOME ".claude\skills"
 
 # --- Install selected skills ---
 if (-not (Test-Path $SkillsDir)) {

@@ -11,40 +11,33 @@
 
 ## 安装
 
-支持两种安装位置：
-
-- **全局安装**（`~/.claude/skills/`）：所有项目都可用
-- **项目安装**（`.claude/skills/`）：仅当前项目可用
+Skills 安装到全局目录 `~/.claude/skills/`，所有项目都可用。
 
 ### macOS / Linux
 
 ```bash
-# 一键安装全部（全局）
+# 一键安装全部
 curl -fsSL https://raw.githubusercontent.com/zhongxq2018/dev-simple-skills/main/install.sh | bash -s -- --all
 
 # 克隆后交互选择
 git clone https://github.com/zhongxq2018/dev-simple-skills.git
 cd dev-simple-skills
-./install.sh              # 交互选择技能 + 安装位置
-./install.sh --all        # 全部安装到全局
-./install.sh --all --local # 全部安装到当前项目
-./install.sh --local      # 交互选择技能，安装到当前项目
+./install.sh              # 交互选择要安装的技能
+./install.sh --all        # 全部安装
 ```
 
 ### Windows (PowerShell)
 
 ```powershell
-# 一键安装全部（全局）
+# 一键安装全部
 .\install.ps1 -All
 
 # 交互选择
-.\install.ps1              # 交互选择技能 + 安装位置
-.\install.ps1 -All         # 全部安装到全局
-.\install.ps1 -All -Local  # 全部安装到当前项目
-.\install.ps1 -Local       # 交互选择技能，安装到当前项目
+.\install.ps1              # 交互选择要安装的技能
+.\install.ps1 -All         # 全部安装
 ```
 
-运行后会列出所有可用 skills，输入数字选择要安装的（支持多选，`0` 表示全部安装），然后选择安装位置。
+运行后会列出所有可用 skills，输入数字选择要安装的（支持多选，`0` 表示全部安装）。
 
 安装后重启 Claude Code 即可使用。
 
@@ -54,16 +47,14 @@ cd dev-simple-skills
 
 ```bash
 ./uninstall.sh              # 交互选择要卸载的技能
-./uninstall.sh --all        # 卸载全局安装的所有技能
-./uninstall.sh --all --local # 卸载当前项目的所有技能
+./uninstall.sh --all        # 卸载全部
 ```
 
 ### Windows (PowerShell)
 
 ```powershell
 .\uninstall.ps1              # 交互选择要卸载的技能
-.\uninstall.ps1 -All         # 卸载全局安装的所有技能
-.\uninstall.ps1 -All -Local  # 卸载当前项目的所有技能
+.\uninstall.ps1 -All         # 卸载全部
 ```
 
 ## 使用

@@ -5,41 +5,16 @@ SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 
 # --- Parse flags ---
 uninstall_all=false
-uninstall_local=false
 for arg in "$@"; do
   case "$arg" in
-    --all)   uninstall_all=true ;;
-    --local) uninstall_local=true ;;
-    *)       echo "Unknown option: $arg"; echo "Usage: $0 [--all] [--local]"; exit 1 ;;
+    --all) uninstall_all=true ;;
+    *)     echo "Unknown option: $arg"; echo "Usage: $0 [--all]"; exit 1 ;;
   esac
 done
 
-# --- Determine scan locations ---
+# --- Uninstall location (global only) ---
 GLOBAL_DIR="$HOME/.claude/skills"
-LOCAL_DIR="$SCRIPT_DIR/.claude/skills"
-
-scan_dirs=()
-if [ "$uninstall_local" = true ]; then
-  scan_dirs+=("$LOCAL_DIR")
-elif [ ! -t 0 ]; then
-  scan_dirs+=("$GLOBAL_DIR")
-else
-  echo ""
-  echo "Uninstall from:"
-  echo "  [1] Global (~/.claude/skills)"
-  echo "  [2] Local  (.claude/skills)"
-  echo ""
-
-  while true; do
-    read -rp "Choose (1/2) [1]: " loc_choice
-    loc_choice="${loc_choice:-1}"
-    case "$loc_choice" in
-      1) scan_dirs+=("$GLOBAL_DIR"); break ;;
-      2) scan_dirs+=("$LOCAL_DIR"); break ;;
-      *) echo "Please enter 1 or 2." ;;
-    esac
-  done
-fi
+scan_dirs=("$GLOBAL_DIR")
 
 # --- Collect project's own skills ---
 PROJECT_SKILLS_DIR="$SCRIPT_DIR/skills"

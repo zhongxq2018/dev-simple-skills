@@ -1,5 +1,5 @@
 ---
-name: session-handoff
+name: zxq_session-handoff
 description: Initialize session handoff in a project, or save current session state for next session recovery
 ---
 

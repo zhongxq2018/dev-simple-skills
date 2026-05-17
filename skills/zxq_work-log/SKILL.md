@@ -1,5 +1,5 @@
 ---
-name: work-log
+name: zxq_work-log
 description: 记录项目关键变化和决策演进
 ---
 

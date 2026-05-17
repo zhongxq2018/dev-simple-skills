@@ -6,8 +6,8 @@
 
 | Skill | 说明 |
 |-------|------|
-| **session-handoff** | 跨会话保存和恢复工作状态，支持自动加载上次进度 |
-| **work-log** | 项目长期记忆系统，记录关键功能变化、架构决策和方案演进 |
+| **zxq_session-handoff** | 跨会话保存和恢复工作状态，支持自动加载上次进度 |
+| **zxq_work-log** | 项目长期记忆系统，记录关键功能变化、架构决策和方案演进 |
 
 ## 安装
 
@@ -41,14 +41,14 @@ cd dev-simple-skills
 
 ## 使用
 
-### session-handoff
+### zxq_session-handoff
 
 保存和恢复跨会话的工作状态。
 
 **初始化（首次使用）：**
 
 ```
-/session-handoff init
+/zxq_session-handoff init
 ```
 
 会在项目中创建 `.claude/memory/handoff.md` 模板，并配置 SessionStart Hook。支持全局生效或仅当前项目生效。
@@ -56,7 +56,7 @@ cd dev-simple-skills
 **保存状态（结束会话前）：**
 
 ```
-/session-handoff
+/zxq_session-handoff
 ```
 
 将当前工作状态（进行中的任务、关键上下文、下一步操作等）写入 `handoff.md`。
@@ -65,19 +65,19 @@ cd dev-simple-skills
 
 配置 Hook 后，每次开启新会话时，Claude Code 会自动读取 `handoff.md` 的内容并恢复上次的工作上下文。无需手动操作。
 
-### work-log
+### zxq_work-log
 
 记录项目关键变更和架构决策，构建项目长期记忆。
 
 ```
-/work-log
+/zxq_work-log
 ```
 
-每次会话结束前运行，将本次的关键变更（功能、决策、方案调整等）写入 `.claude/memory/work-log/YYYY-MM.md`。历史记录不可修改，保证项目决策的完整演进过程。
+每次会话结束前运行，将本次的关键变更（功能、决策、方案调整等）写入 `.claude/memory/zxq_work-log/YYYY-MM.md`。历史记录不可修改，保证项目决策的完整演进过程。
 
 ---
 
-两个 skill 配合使用：**session-handoff** 管理短期记忆（当前进度），**work-log** 管理长期记忆（历史决策）。
+两个 skill 配合使用：**zxq_session-handoff** 管理短期记忆（当前进度），**zxq_work-log** 管理长期记忆（历史决策）。
 
 ## License
 

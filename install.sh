@@ -9,7 +9,7 @@ if [ -d "$SCRIPT_DIR/skills" ]; then
   SOURCE_DIR="$SCRIPT_DIR/skills"
   echo "Installing from local directory..."
 else
-  REPO_URL="https://github.com/zhongxq/dev-simple-skills"
+  REPO_URL="https://github.com/zhongxq2018/dev-simple-skills"
   TMP_DIR=$(mktemp -d)
   echo "Downloading from $REPO_URL..."
   if command -v git &>/dev/null; then

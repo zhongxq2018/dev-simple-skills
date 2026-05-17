@@ -14,13 +14,13 @@
 ### 一键安装（推荐）
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/zhongxq/dev-simple-skills/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/zhongxq2018/dev-simple-skills/main/install.sh | bash
 ```
 
 ### 手动安装
 
 ```bash
-git clone https://github.com/zhongxq/dev-simple-skills.git
+git clone https://github.com/zhongxq2018/dev-simple-skills.git
 cd dev-simple-skills
 ./install.sh
 ```

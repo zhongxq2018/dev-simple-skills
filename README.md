@@ -48,6 +48,24 @@ cd dev-simple-skills
 
 安装后重启 Claude Code 即可使用。
 
+## 卸载
+
+### macOS / Linux
+
+```bash
+./uninstall.sh              # 交互选择要卸载的技能
+./uninstall.sh --all        # 卸载全局安装的所有技能
+./uninstall.sh --all --local # 卸载当前项目的所有技能
+```
+
+### Windows (PowerShell)
+
+```powershell
+.\uninstall.ps1              # 交互选择要卸载的技能
+.\uninstall.ps1 -All         # 卸载全局安装的所有技能
+.\uninstall.ps1 -All -Local  # 卸载当前项目的所有技能
+```
+
 ## 使用
 
 ### zxq_session-handoff

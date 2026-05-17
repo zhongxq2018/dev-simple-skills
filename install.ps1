@@ -50,7 +50,6 @@ $SelectedIndices = @()
 
 if ($All) {
     # Non-interactive: install all
-    for ($i = -1; $i -lt $Skills.Count - 1; $i++) { $SelectedIndices += $i }
     $SelectedIndices = 0..($Skills.Count - 1)
 } elseif (-not [Console]::IsInputRedirected -or $Host.UI.SupportsUserInput) {
     # Interactive selection

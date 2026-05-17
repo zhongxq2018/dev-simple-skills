@@ -11,19 +11,21 @@
 
 ## 安装
 
-### 一键安装（推荐）
+### 一键安装全部（推荐）
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/zhongxq2018/dev-simple-skills/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/zhongxq2018/dev-simple-skills/main/install.sh | bash -s -- --all
 ```
 
-### 手动安装
+### 交互式选择安装
 
 ```bash
 git clone https://github.com/zhongxq2018/dev-simple-skills.git
 cd dev-simple-skills
 ./install.sh
 ```
+
+运行后会列出所有可用 skills，输入数字选择要安装的（支持多选，`0` 表示全部安装）。
 
 安装后重启 Claude Code 即可使用。
 

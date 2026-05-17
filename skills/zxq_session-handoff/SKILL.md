@@ -51,8 +51,6 @@ Write the following template to `.claude/memory/handoff.md`:
 
 Only create if the file does not already exist. Do NOT overwrite an existing handoff.md.
 
-Then create `.claude/memory/handoff.template.md` with the same template content above. This template file is used by the SessionStart hook to restore handoff.md to its initial state after reading.
-
 ### Step 4: Update CLAUDE.md
 
 Check if `CLAUDE.md` exists in the project root:
@@ -93,7 +91,7 @@ The hook configuration format:
         "hooks": [
           {
             "type": "command",
-            "command": "(cat .claude/memory/handoff.md 2>/dev/null && cp .claude/memory/handoff.template.md .claude/memory/handoff.md) || echo 'No handoff file found'",
+            "command": "cat .claude/memory/handoff.md 2>/dev/null || echo 'No handoff file found'",
             "timeout": 10
           }
         ]
@@ -138,7 +136,7 @@ Review the conversation to identify:
 - **Relevant Files**: Files that were read or modified this session
 - **Risks/Warnings**: Anything that could go wrong or needs attention
 
-After analysis, if the session has **no substantive work in progress** (no pending tasks, no files modified, no unfinished work), tell the user: "当前会话无需交接，没有待办内容。" Then end Mode B — do NOT proceed to Step 2.
+After analysis, if the session has **no substantive work in progress** (no pending tasks, no files modified, no unfinished work), write the empty template (same as the init template in Mode A Step 3) to `.claude/memory/handoff.md`, overwriting the file. Then tell the user: "当前会话无需交接，handoff.md 已重置。" End Mode B — do NOT proceed to Step 2.
 
 ### Step 2: Write handoff.md
 
@@ -153,3 +151,24 @@ Requirements:
 ### Step 3: Confirm
 
 Tell the user the handoff has been saved and they can safely end the session.
+
+---
+
+## Mode C: Clear (`/zxq_session-handoff clear`)
+
+When user runs `/zxq_session-handoff clear`, reset handoff.md to its initial template state.
+
+### Step 1: Check initialization
+
+Check if `.claude/memory/handoff.md` exists:
+
+- **If exists**: Proceed to Step 2
+- **If NOT exists**: Tell the user: "handoff.md 不存在，项目尚未初始化 session-handoff。" End.
+
+### Step 2: Reset handoff.md
+
+Write the empty template (same as the init template in Mode A Step 3) to `.claude/memory/handoff.md`, overwriting the file.
+
+### Step 3: Confirm
+
+Tell the user: "handoff.md 已重置为初始状态。"

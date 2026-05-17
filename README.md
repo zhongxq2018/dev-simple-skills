@@ -81,7 +81,15 @@ cd dev-simple-skills
 
 **自动恢复：**
 
-配置 Hook 后，每次开启新会话时，Claude Code 会自动读取 `handoff.md` 的内容并恢复上次的工作上下文。读取后 `handoff.md` 会自动重置为初始模板状态，避免旧内容残留。无需手动操作。
+配置 Hook 后，每次开启新会话时，Claude Code 会自动读取 `handoff.md` 的内容并恢复上次的工作上下文。无需手动操作。
+
+**重置：**
+
+```
+/zxq_session-handoff clear
+```
+
+将 `handoff.md` 重置为初始模板状态。当交接内容已过期或需要从头开始时使用。此外，保存状态时如果当前会话没有待交接的内容，也会自动重置。
 
 ### zxq_work-log
 

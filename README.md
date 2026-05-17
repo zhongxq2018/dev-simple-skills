@@ -43,14 +43,41 @@ cd dev-simple-skills
 
 ### session-handoff
 
-- `/session-handoff init` — 在项目中初始化会话恢复功能
-- `/session-handoff` — 保存当前会话状态，方便下次恢复
+保存和恢复跨会话的工作状态。
+
+**初始化（首次使用）：**
+
+```
+/session-handoff init
+```
+
+会在项目中创建 `.claude/memory/handoff.md` 模板，并配置 SessionStart Hook。支持全局生效或仅当前项目生效。
+
+**保存状态（结束会话前）：**
+
+```
+/session-handoff
+```
+
+将当前工作状态（进行中的任务、关键上下文、下一步操作等）写入 `handoff.md`。
+
+**自动恢复：**
+
+配置 Hook 后，每次开启新会话时，Claude Code 会自动读取 `handoff.md` 的内容并恢复上次的工作上下文。无需手动操作。
 
 ### work-log
 
-- `/work-log` — 记录本次会话的关键变更和决策到项目长期日志
+记录项目关键变更和架构决策，构建项目长期记忆。
 
-两个 skill 配合使用：`session-handoff` 管理短期记忆（当前进度），`work-log` 管理长期记忆（历史决策）。
+```
+/work-log
+```
+
+每次会话结束前运行，将本次的关键变更（功能、决策、方案调整等）写入 `.claude/memory/work-log/YYYY-MM.md`。历史记录不可修改，保证项目决策的完整演进过程。
+
+---
+
+两个 skill 配合使用：**session-handoff** 管理短期记忆（当前进度），**work-log** 管理长期记忆（历史决策）。
 
 ## License
 

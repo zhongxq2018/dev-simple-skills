@@ -69,7 +69,7 @@ cd dev-simple-skills
 /zxq_session-handoff init
 ```
 
-会在项目中创建 `.claude/memory/handoff.md` 模板，并配置 SessionStart Hook。支持全局生效或仅当前项目生效。
+会在项目中创建 `.claude/memory/handoff.md` 和 `handoff.template.md`，并配置 SessionStart Hook。支持全局生效或仅当前项目生效。
 
 **保存状态（结束会话前）：**
 
@@ -81,7 +81,7 @@ cd dev-simple-skills
 
 **自动恢复：**
 
-配置 Hook 后，每次开启新会话时，Claude Code 会自动读取 `handoff.md` 的内容并恢复上次的工作上下文。无需手动操作。
+配置 Hook 后，每次开启新会话时，Claude Code 会自动读取 `handoff.md` 的内容并恢复上次的工作上下文。读取后 `handoff.md` 会自动重置为初始模板状态，避免旧内容残留。无需手动操作。
 
 ### zxq_work-log
 

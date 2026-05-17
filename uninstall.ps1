@@ -36,15 +36,21 @@ if ($Local) {
     }
 }
 
-# --- Collect installed skills ---
+# --- Collect project's own skills ---
+$ProjectSkillsDir = Join-Path $ScriptDir "skills"
+$ProjectSkills = @()
+if (Test-Path $ProjectSkillsDir) {
+    $ProjectSkills = (Get-ChildItem -Path $ProjectSkillsDir -Directory).Name
+}
+
+# --- Collect installed skills (only those belonging to this project) ---
 $Skills = @()
 foreach ($dir in $ScanDirs) {
     if (-not (Test-Path $dir)) { continue }
-    $dirs = Get-ChildItem -Path $dir -Directory
-    foreach ($d in $dirs) {
-        $name = $d.Name
-        if ($Skills -notcontains $name) {
-            $Skills += $name
+    foreach ($ps in $ProjectSkills) {
+        $target = Join-Path $dir $ps
+        if ((Test-Path $target) -and ($Skills -notcontains $ps)) {
+            $Skills += $ps
         }
     }
 }

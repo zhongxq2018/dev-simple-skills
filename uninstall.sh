@@ -41,19 +41,29 @@ else
   done
 fi
 
-# --- Collect installed skills ---
+# --- Collect project's own skills ---
+PROJECT_SKILLS_DIR="$SCRIPT_DIR/skills"
+project_skills=()
+if [ -d "$PROJECT_SKILLS_DIR" ]; then
+  for skill_dir in "$PROJECT_SKILLS_DIR"/*/; do
+    [ -d "$skill_dir" ] || continue
+    project_skills+=("$(basename "$skill_dir")")
+  done
+fi
+
+# --- Collect installed skills (only those belonging to this project) ---
 skills=()
 for dir in "${scan_dirs[@]}"; do
   [ -d "$dir" ] || continue
-  for skill_dir in "$dir"/*/; do
-    [ -d "$skill_dir" ] || continue
-    skill_name=$(basename "$skill_dir")
-    # Avoid duplicates
-    already=false
-    for s in "${skills[@]}"; do
-      [ "$s" = "$skill_name" ] && already=true && break
-    done
-    [ "$already" = false ] && skills+=("$skill_name")
+  for ps in "${project_skills[@]}"; do
+    if [ -d "$dir/$ps" ]; then
+      # Avoid duplicates
+      already=false
+      for s in "${skills[@]}"; do
+        [ "$s" = "$ps" ] && already=true && break
+      done
+      [ "$already" = false ] && skills+=("$ps")
+    fi
   done
 done
 

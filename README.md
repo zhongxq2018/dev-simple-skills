@@ -11,31 +11,40 @@
 
 ## 安装
 
+支持两种安装位置：
+
+- **全局安装**（`~/.claude/skills/`）：所有项目都可用
+- **项目安装**（`.claude/skills/`）：仅当前项目可用
+
 ### macOS / Linux
 
 ```bash
-# 一键安装全部
+# 一键安装全部（全局）
 curl -fsSL https://raw.githubusercontent.com/zhongxq2018/dev-simple-skills/main/install.sh | bash -s -- --all
 
-# 或克隆后交互选择安装
+# 克隆后交互选择
 git clone https://github.com/zhongxq2018/dev-simple-skills.git
 cd dev-simple-skills
-./install.sh
+./install.sh              # 交互选择技能 + 安装位置
+./install.sh --all        # 全部安装到全局
+./install.sh --all --local # 全部安装到当前项目
+./install.sh --local      # 交互选择技能，安装到当前项目
 ```
 
 ### Windows (PowerShell)
 
 ```powershell
-# 一键安装全部
-iwr -useb https://raw.githubusercontent.com/zhongxq2018/dev-simple-skills/main/install.ps1 | iex; install.ps1 --all
+# 一键安装全部（全局）
+.\install.ps1 -All
 
-# 或克隆后交互选择安装
-git clone https://github.com/zhongxq2018/dev-simple-skills.git
-cd dev-simple-skills
-.\install.ps1
+# 交互选择
+.\install.ps1              # 交互选择技能 + 安装位置
+.\install.ps1 -All         # 全部安装到全局
+.\install.ps1 -All -Local  # 全部安装到当前项目
+.\install.ps1 -Local       # 交互选择技能，安装到当前项目
 ```
 
-运行后会列出所有可用 skills，输入数字选择要安装的（支持多选，`0` 表示全部安装）。
+运行后会列出所有可用 skills，输入数字选择要安装的（支持多选，`0` 表示全部安装），然后选择安装位置。
 
 安装后重启 Claude Code 即可使用。
 

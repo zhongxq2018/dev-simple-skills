@@ -51,6 +51,8 @@ Write the following template to `.claude/memory/handoff.md`:
 
 Only create if the file does not already exist. Do NOT overwrite an existing handoff.md.
 
+Then create `.claude/memory/handoff.template.md` with the same template content above. This template file is used by the SessionStart hook to restore handoff.md to its initial state after reading.
+
 ### Step 4: Update CLAUDE.md
 
 Check if `CLAUDE.md` exists in the project root:
@@ -91,7 +93,7 @@ The hook configuration format:
         "hooks": [
           {
             "type": "command",
-            "command": "cat .claude/memory/handoff.md 2>/dev/null || echo 'No handoff file found'",
+            "command": "(cat .claude/memory/handoff.md 2>/dev/null && cp .claude/memory/handoff.template.md .claude/memory/handoff.md) || echo 'No handoff file found'",
             "timeout": 10
           }
         ]

@@ -156,6 +156,8 @@ Review the conversation to identify:
 - **Relevant Files**: Files that were read or modified this session
 - **Risks/Warnings**: Anything that could go wrong or needs attention
 
+After analysis, if the session has **no substantive work in progress** (no pending tasks, no files modified, no unfinished work), tell the user: "当前会话无需交接，没有待办内容。" Then end Mode B — do NOT proceed to Step 2.
+
 ### Step 2: Write handoff.md
 
 Write the analysis to `.claude/memory/handoff.md` in the project root. **Directly overwrite** the file (do NOT append).

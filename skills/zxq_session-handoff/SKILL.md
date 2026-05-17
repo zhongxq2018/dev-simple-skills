@@ -137,6 +137,15 @@ List all files created/modified with their paths. Summarize what was done.
 
 When user runs `/session-handoff` (no `init` argument), save current session state.
 
+### Step 0: Check initialization
+
+Check if `.claude/memory/handoff.md` exists in the current project:
+
+- **If exists**: Proceed to Step 1
+- **If NOT exists**: Tell the user the project has not been initialized for session handoff. Ask: **检测到项目尚未初始化 session-handoff，是否先执行初始化？** Wait for answer:
+  - If yes: Run Mode A init steps (Step 2-7), then proceed to Step 1
+  - If no: Skip handoff and end
+
 ### Step 1: Analyze current session
 
 Review the conversation to identify:

@@ -29,10 +29,12 @@ cd dev-simple-skills
 ### Windows (PowerShell)
 
 ```powershell
-# 一键安装全部
-.\install.ps1 -All
+# 一键安装全部（无需克隆仓库）
+iex "& { $(iwr 'https://raw.githubusercontent.com/zhongxq2018/dev-simple-skills/main/install.ps1').Content } -All"
 
-# 交互选择
+# 克隆后使用
+git clone https://github.com/zhongxq2018/dev-simple-skills.git
+cd dev-simple-skills
 .\install.ps1              # 交互选择要安装的技能
 .\install.ps1 -All         # 全部安装
 ```
